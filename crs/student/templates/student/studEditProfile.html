@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Edit Profile</title>
+    <script type= "text/javascript" src="../../static/student/stateCity.js"></script>
+    <script type="text/javascript" src="../../static/student/mobzipValidate.js"></script>
+    <!-- Bootstrap Core CSS -->
+   <link href="../../static/student/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../../static/student/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../static/student/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../static/student/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">{{ msg }}</a>                <!-- ADD USER NAME, ADD VIEW PROFILE URL-->
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="/crs/studentProfile/"><i class="fa fa-user fa-fw"></i> My Profile</a>
+                        </li>
+                         <li><a href="/changePassword/"><i class="fa fa-gear fa-fw"></i> Change Password</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="/logout/"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            
+                        </li>
+                        <li>
+                            <a href="/crs/search/"><i class="fa fa-search fa-fw"></i>Search</a>
+                        </li>
+                        <li>
+                            <a href="/crs/complainView/"><i class="fa fa-table fa-fw"></i>View Complain</a>
+                        </li>
+                        <li>
+                            <a href="/crs/lodgeComplain/"><i class="fa fa-pencil-square-o fa-fw"></i>Lodge Complain</a>
+                        </li>
+                        <li>
+                            <a href="/crs/loadRateSecPage/"><i class="fa fa-edit fa-fw"></i> Rate Secretary</a>
+                        </li>
+                        <!-- <li>
+                            <a href="/crs/messrebate/"><i class="fa fa-money fa-fw"></i> Mess Rebate</a>
+                        </li> -->
+                        <li>
+                            <a  href="#"><i class="fa fa-edit fa-fw"></i>  Mess Poll <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/crs/pollOptions/">Polling</a>
+                                </li>
+                                <li>
+                                    <a id href="/crs/pollResult/">Poll Result</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a  href="#"><i class="fa fa-edit fa-fw"></i> Hostel Leaving Info<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/viewPastForm/">Previous Forms</a>
+                                </li>
+                                <li>
+                                    <a href="/OpenHostelPage/">Fill New Form</a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Edit Profile</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Basic Information
+                            <strong><div style="color:red;float:right">{{msg2}}</div></strong>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                <h2>Personal Detail</h2>
+                                    <form name="test" method="POST" action="../studAfterEditProfile/"> <!--see for action-->
+                                        <fieldset disabled="">
+                                        <div class="form-group">
+                                            <label for="disabledSelect">Username</label>
+                                            <input  id="disabledInput" class="form-control" type="text" value="{{list.username}}" placeholder="{{username}}">
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                            <label for="disabledSelect">Name</label>
+                                            <input  id="disabledInput" class="form-control" type="text" value="{{list.name}}" placeholder="{{name}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledSelect">Roll Number</label>
+                                            <input  id="disabledInput" class="form-control" type="text" value="{{list.roll}}" placeholder="{{roll}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledSelect">Email</label>
+                                            <input  id="disabledInput" class="form-control" type="text" value="{{list.email}}" placeholder="{{email}}">
+                                        </div>
+
+                                         </fieldset>
+                                    <div class="col-lg-6">
+                                    <fieldset disabled="">
+                                    	<div class="form-group">
+                                            <label for="disabledSelect">Sex</label>
+                                            <select name="sex" class="form-control">
+                                                <option>
+                                                    {% if list.sex == "M" %}
+                                                             Male
+                                                    {% elif list.sex == "F" %}
+                                                             Female
+                                                    {% else %}
+                                                            Others
+                                                    {% endif %}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </fieldset>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        
+                                        <div class="form-group">
+                                            <label>Blood Group</label>
+                                            <select name="bgroup" class="form-control">
+                                                <option value="A+">A+</option>
+                                                <option value="A-">A-</option>
+                                                <option value="B+">B+</option>
+                                                <option value="B-">B-</option>
+                                                <option value="AB+">AB+</option>
+                                                <option value="AB-">AB-</option>
+                                                <option value="O+">O+</option>
+                                                <option value="O-">O-</option> 
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <h2>Bank Detail</h2>
+                                        <div class="form-group">
+                                            <label>Bank Name</label>
+                                            <select name="bankName" class="form-control">
+                                                <option value="State Bank of India">State Bank of India</option>
+                                                <option value="State Bank of India and Associates">State Bank of India and Associates</option>
+                                                <option value="Federal Bank">Federal Bank</option>
+                                                <option value="Indian Bank">Indian Bank</option>
+                                                <option value="Union Bank of India">Union Bank of India</option>
+                                                <option value="Andhra Bank">Andhra Bank</option>
+                                                <option value="Punjab National Bank">Punjab National Bank </option>
+                                                <option value="Allahabad Bank">Allahabad Bank</option>
+                                                <option value="Vijaya Bank">Vijaya Bank</option>
+                                                <option value="AXIS Bank">AXIS Bank</option>
+                                                <option value="HDFC Bank">HDFC Bank</option>
+                                                <option value="Bank of Baroda">Bank of Baroda</option>
+                                                <option value="Karnataka Bank">Karnataka Bank</option>
+                                                <option value="Oriental Bank of Commerce">Oriental Bank of Commerce</option>
+                                                <option value="Karur Vysya Bank">Karur VysIndusInd Bankya Bank</option>
+                                                <option value="Kotak Mahindra Bank">Kotak ndrahindra Bank</option>
+                                                <option value="INGVysya Bank">INGVysya Bank</option>
+                                                <option value="ICICI Bank">ICICI Bank </option>
+                                                <option value="IndusInd Bank">IndusInd Bank</option>
+                                                <option value="IMPS">IMPS</option>
+                                                <option value="Central Bank of India">Central Bank of India</option>
+                                                <option value="Bank of India">Bank of India</option>
+                                                <option value="Syndicate Bank">Syndicate Bank</option>
+                                                <option value="Bank of Maharashatra">Bank of Maharashatra</option>
+                                                <option value="IDBI Bank">IDBI Bank</option>
+                                                <option value="Corporation Bank">Corporation Bank</option>
+                                                <option value="Yes Bank">Yes Bank</option>
+                                                <option value="Nepal SBI Bank Ltd.">Nepal SBI Bank Ltd.</option>
+                                                <option value="Canara Bank">Canara Bank</option>
+                                                <option value="UCO Bank">UCO Bank</option>
+                                                <option value="BANK OF INDIA">BANK OF INDIA</option>
+                                                <option value="CENTRAL BANK OF INDIA">CENTRAL BANK OF INDIA</option>
+                                                <option value="UNITED BANK OF INDIA">UNITED BANK OF INDIA</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Account Number : </label>
+                                            <input class="form-control" type="text" size="20" name="accnum" required value="" placeholder="Less than 11 digits">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>IFSC Code : </label>
+                                            <input class="form-control" type="text" size="20" name="ifsc" required value="" placeholder="Less than 11 digits">
+                                        </div>
+                                                                                
+                                    
+                                </div> 
+                                <!-- /.col-lg-6 (nested) -->
+                                <div class="col-lg-6">
+                                    <h2>Contact Detail</h2>
+                                        
+                                        <div class="form-group">
+                                            <label>Mobile : </label>
+                                            <input class="form-control" type="tel" name="mobile" required value="" placeholder="Strictly 10 digits">
+                                        </div>
+                                        <p id="mobcheck"></p>
+                                        <div class="col-lg-8">
+                                            <div class="form-group">
+                                            <fieldset disabled="">
+                                            <label for="disabledSelect">Hostel</label>
+                                            <input id="disabledInput" class="form-control" name="hostel"  
+                                             value=" {% if item.hostel == 1 %} Ashoka
+                                                             {% elif item.hostel == 2 %} Aryabhatta
+                                                             {% elif item.hostel == 3 %} Chanakya 1
+                                                             {% elif item.hostel == 4 %} Chanakya 2
+                                                    {% endif %}">
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <fieldset disabled="">
+                                            <div class="form-group">
+                                            <label>Room Number : </label>
+                                            <input class="form-control" type="text" size="4" name="room" value="{{list.room}}">
+                                            </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Permanent Address</label>
+                                            <textarea class="form-control" name="padd" rows="3" required value=""></textarea>
+                                        </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>State  </label>
+                                            <select id="state" class="form-control" name="state" style="width: 150px" required value=""></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>City  </label>
+                                            <select id="city" name="city" class="form-control" style="width: 150px" required value=""></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Pincode </label>
+                                            <input type="text" id="pincode" name="pincode" class="form-control" style="width: 150px" required value="" ></select>
+                                        </div>
+                                        <p id="pincheck"></p>
+                                    </div>
+
+                                        
+                            
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <div class="col-lg-6">
+                        <button type="submit" name="submit" value="Submit" onclick="Validate2(document.test.accnum,document.test.ifsc);Validate(document.test.mobile,document.test.pincode)" class="btn btn-success" style="float: right">Submit</button>
+                        <button type="reset" value="Cancel" class="btn btn-danger" style="float: right">Reset</button>
+                    </div>
+                    </form>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    </br></br></br>
+
+    <script src="../../static/student/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+   <script src="../../static/student/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+     <script src="../../static/student/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../../static/student/dist/js/sb-admin-2.js"></script>
+    <script language="javascript">
+        populateStates("state", "city");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+from django.shortcuts import render, redirect
+from django.shortcuts import render_to_response
+from django.http import HttpResponse
+from django.template import RequestContext, loader
+from django.contrib import auth
+from django.core.context_processors import csrf
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.sessions.models import Session
+import hashlib
+import datetime
+from login.models import *
+import re
+from student.views import getTypeDescription,getCatagory
+
+
+def wardenComplainView(request):
+	try:
+		uid=request.session.get('uid')
+		ComplainObjects = Complainlink.objects.all().filter(woID = uid);
+		PublicComplaintlist=[];
+		PrivateComplaintlist=[];
+		for obj in ComplaintObjects:
+			if obj.studid==0:
+				PublicComplaintlist.append(obj.cid);
+			else:
+				PrivateComplaintlist.append(obj.cid);
+		Privatelist=[];
+		Publiclist=[];
+		for num in PublicComplaintlist:
+			Publiclist.append(obj=Complain.objects.get(cid=num);
+		for num in PrivateComplaintlist:
+			Privatelist.append(obj=Complain.objects.get(cid=num));		#username  in fac table
+			
+
+
+		return render_to_response('warden/wardenComplainView',{'list1' : Publiclist},{'list2':Privatelist});
+	except:
+		return render_to_response(login/loginPage.html);
+
+
+
+def wardenHome(request):
+	try:
+		uid=request.session.get('uid')
+		return render_to_response('warden/wardenHome.html');
+	except:
+		return render_to_response(login/loginPage.html);
+
+def wardenProfile(request):
+	try:
+	uid=request.session.get('uid')
+	return render_to_response('warden/wardenProfile.html');
+	except:
+		return render_to_response(login/loginPage.html);
+
+def wardenEditProfile(request):
+	try:
+		uid=request.session.get('uid');
+		obj=Faculty.objects.get(fid=uid);
+		mobile=request.POST['mobile'];
+		obj.mobile=mobile;
+		obj.save();
+	except:
+		return render_to_response(login/loginPage.html);
+

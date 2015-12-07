@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<style></style>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+
+<script>
+$(document).ready(function() {
+$( "#custom" ).hide(); 
+$("#cust").click(function() {
+$( "#custom" ).show();});
+$("#pub").click(function() {
+$( "#custom" ).hide();});
+$("#pri").click(function() {
+$( "#custom" ).hide();});
+});
+</script>
+
+
+<div id="right">
+<form name="complainForm" action="../lodgedComplainDetail/" method="post" enctype="multipart/form-data">
+	
+		<p id="s1">Select catagory of complain.</p>
+		<select name="catagory" style="width: 500px">
+		<option value="Environment">Environment</option>
+		<option value="Mess">Mess</option>
+		<option value="Maintenance">Maintenance</option>
+		<option value="Technical">Technical</option></select>
+		
+
+	<p id="s1">Select type of complain.</p>
+	<p><input id="pri" type="radio" name="complainType" value="1" checked>Private
+
+	<input id="pub" type="radio" name="complainType" value="0">Public
+
+	<input id="cust" type="radio" name="complainType" value="2">Custom
+	</p>
+	<div id="custom" >
+  		<p>Add other people</p>
+  		<p><label for="first">First:</label>
+				<input type="text" name="first"  />&nbsp;
+			<label for="second">Second:</label>
+				<input type="text" name="second"  />&nbsp;
+			<label for="third">Third:</label>
+				<input type="text" name="third"  />&nbsp;
+			<label for="fourt">Fourth:</label>
+				<input type="text" name="fourth"  />&nbsp;
+			<label for="fifth">Fifth:</label>
+				<input type="text" name="fifth"  />
+			</p>
+  	 </div>	
+	<p>Subject&nbsp;&nbsp;<input type="text" name="subject" placeholder="Subject" required value="" > </p>
+	
+	<p>Add description of complain</p>
+	<p><textarea  name="message" rows="10" cols="70" placeholder="Write description of complain." required value=""></textarea></p>
+	{% csrf_token %}
+			<p>{{ form.non_field_errors }}</p>
+			<p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+			<p>
+				{{ form.docfile.errors }}
+				{{ form.docfile }}
+			</p>
+			<p><input type="submit" id="sbmit"  value="Lodge" /></p>
+ 
+ 
+</form>
+  </div>
+  
+
+
+</body>
+</html>
